@@ -13,9 +13,8 @@ docs/
 # Dotenv file
 .env
 
+# Development folders
 broadcast/
 lib/
-.github/
 .vscode/
-.vscode
-.github
+.github/
