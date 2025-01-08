@@ -18,3 +18,4 @@ broadcast/
 lib/
 .vscode/
 .github/
+.gitignore

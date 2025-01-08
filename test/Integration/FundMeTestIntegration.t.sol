@@ -1,15 +1,16 @@
 // SPDX-License-Identifier: MIT
-
-pragma solidity 0.8.19;
+pragma solidity ^0.8.19;
 
 import {DeployFundMe} from "../../script/DeployFundMe.s.sol";
 import {FundFundMe, WithdrawFundMe} from "../../script/Interactions.s.sol";
 import {FundMe} from "../../src/FundMe.sol";
 import {Test, console} from "forge-std/Test.sol";
+import {HelperConfig} from "../../script/HelperConfig.s.sol";
 
 contract InteractionsTest is Test {
     FundMe public fundMe;
-    DeployFundMe deployFundMe;
+    HelperConfig public helperConfig;
+    DeployFundMe public deployFundMe;
 
     uint256 public constant SEND_VALUE = 0.1 ether;
     uint256 public constant STARTING_USER_BALANCE = 10 ether;
@@ -19,7 +20,7 @@ contract InteractionsTest is Test {
 
     function setUp() external {
         deployFundMe = new DeployFundMe();
-        fundMe = deployFundMe.run();
+        (fundMe, helperConfig) = deployFundMe.run();
         vm.deal(alice, STARTING_USER_BALANCE);
     }
 
