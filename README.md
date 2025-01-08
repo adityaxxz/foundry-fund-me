@@ -1,66 +1,109 @@
-## Foundry
+# FundMe Smart Contract
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+A decentralized funding contract that allows users to send ETH while ensuring a minimum USD value, Built with Foundry.
 
-Foundry consists of:
+## 📜 Contract Details
+- **[Etherscan verified contract here](https://sepolia.etherscan.io/address/0x041a65179a37801967cb36049ace4bdd760f06b9#code)**
+- Uses Chainlink Price Feeds for accurate ETH/USD conversion
+- Implements withdrawal pattern
+- Gas-optimized operations
+- Comprehensive test suite
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+## Core Features
 
-## Documentation
+- **Funding**: Users can send ETH (minimum $5 USD equivalent)
+- **Price Feed Integration**: Real-time ETH/USD conversion via Chainlink
+- **Withdrawal**: Only owner can withdraw accumulated funds
+- **Gas Optimized**: Implements gas-efficient withdrawal patterns
+- **Security**: Owner-only functions, secure fund management
 
-https://book.getfoundry.sh/
+## Built With
+
+- [Foundry](https://book.getfoundry.sh/) - Development framework
+- [Chainlink](https://chain.link/) - Price Feed Oracle
+- Solidity version ^0.8.18
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+* [foundry](https://book.getfoundry.sh/getting-started/installation)
+
+### Installation
+
+1. Clone this repository:
+```bash
+git clone https://github.com/yourusername/foundry-fund-me
+cd foundry-fund-me
+```
+
+2. Install dependencies:
+```bash
+forge install
+```
+
+3. Build the project:
+```bash
+forge build
+```
+
+### Running Tests
+
+```bash
+# Run all tests
+forge test
+
+# Run tests with gas report
+forge test --gas-report
+
+# Run a specific test
+forge test --match-test testFunctionName
+
+# Run tests with verbosity
+forge test -vv
+```
 
 ## Usage
 
-### Build
-
-```shell
-$ forge build
-```
-
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
 ### Deploy
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
+1. Setup environment variables:
+```bash
+cp .env.example .env
+# Add your RPC_URL and PRIVATE_KEY to .env
 ```
 
-### Cast
-
-```shell
-$ cast <subcommand>
+2. Deploy:
+```bash
+forge script script/DeployFundMe.s.sol --rpc-url $RPC_URL --private-key $PRIVATE_KEY --broadcast
 ```
 
-### Help
+### Interact with Contract
 
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
+Fund the contract:
+```bash
+forge script script/Interactions.s.sol:FundFundMe --rpc-url $RPC_URL --private-key $PRIVATE_KEY --broadcast
 ```
+
+Withdraw funds (only owner):
+```bash
+forge script script/Interactions.s.sol:WithdrawFundMe --rpc-url $RPC_URL --private-key $PRIVATE_KEY --broadcast
+```
+
+## Testing
+
+The project includes:
+- Unit tests
+- Integration tests
+- Forked network tests
+
+### Test Coverage
+
+```bash
+forge coverage
+```
+
+##  License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+
