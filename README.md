@@ -2,7 +2,7 @@
 
 A decentralized funding contract that allows users to send ETH while ensuring a minimum USD value, Built with Foundry.
 
-## 📜 Contract Details
+## Contract Details
 - **[Etherscan verified contract here](https://sepolia.etherscan.io/address/0x041a65179a37801967cb36049ace4bdd760f06b9#code)**
 - Uses Chainlink Price Feeds for accurate ETH/USD conversion
 - Implements withdrawal pattern
@@ -21,7 +21,6 @@ A decentralized funding contract that allows users to send ETH while ensuring a 
 
 - [Foundry](https://book.getfoundry.sh/) - Development framework
 - [Chainlink](https://chain.link/) - Price Feed Oracle
-- Solidity version ^0.8.18
 
 ## 🚀 Getting Started
 
@@ -102,8 +101,4 @@ The project includes:
 ```bash
 forge coverage
 ```
-
-##  License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
